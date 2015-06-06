@@ -28,7 +28,8 @@ import Node.Path (FilePath())
 import Node.FS.Perms (Perms())
 import Node.FS.Stats (Stats())
 import Data.Date (Date())
-import Control.Monad.Eff (Eff())
+import Control.Monad.Eff (Eff(), runPure)
+import Control.Monad.Eff.Unsafe (unsafeInterleaveEff)
 import Data.Either (either)
 import Control.Monad.Aff (Aff(), makeAff)
 import Node.Buffer (Buffer())
@@ -221,14 +222,22 @@ appendTextFile = toAff3 A.appendTextFile
 
 -- |
 -- Patch `Node.FS.Async.exists`
+-- The current version of `Node.FS.Async.exists` fails the occurs check
+-- because it's callback signature does not include the FS effect.
 --
 import Data.Function
+foreign import mkEff
+  "function mkEff(action) {\
+  \  return action;\
+  \}" :: forall eff a. (Unit -> a) -> Eff eff a
 foreign import fs "var fs = require('fs');" ::
   { exists :: forall a. Fn2 FilePath (Boolean -> a) Unit }
+_exists file cb = mkEff $ \_ -> runFn2
+  fs.exists file $ \b -> runPure (unsafeInterleaveEff (cb b))
 
 -- |
 -- | Check to see if a file exists.
 -- |
 exists :: forall eff. String
                    -> Aff (fs :: F.FS | eff) Boolean
-exists file = makeAff \_ a -> pure $ runFn2 fs.exists file a
+exists file = makeAff \_ a -> _exists file a
