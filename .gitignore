@@ -1,0 +1,6 @@
+*.sw[mnopqrstuv]
+*.un~
+.psci
+node_modules
+bower_components
+output

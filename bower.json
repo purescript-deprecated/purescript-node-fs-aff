@@ -1,0 +1,26 @@
+{
+  "name": "purescript-node-fs-aff",
+  "version": "0.0.1",
+  "authors": [
+    "Felix Schlitter <felixschlitter@gmail.com>"
+  ],
+  "description": "Aff wrappers for purescript-node-fs",
+  "keywords": [
+    "purescript",
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/felixSchl/purescript-node-fs-aff",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "purescript-aff": "~0.10.1",
+    "purescript-node-fs": "~0.6.0",
+    "purescript-either": "~0.1.8"
+  }
+}
