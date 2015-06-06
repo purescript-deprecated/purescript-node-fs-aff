@@ -21,6 +21,7 @@
   "dependencies": {
     "purescript-aff": "~0.10.1",
     "purescript-node-fs": "~0.6.0",
-    "purescript-either": "~0.1.8"
+    "purescript-either": "~0.1.8",
+    "purescript-node-path": "~0.3.0"
   }
 }
