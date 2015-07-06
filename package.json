@@ -1,10 +1,10 @@
 {
   "private": true,
   "devDependencies": {
-    "bluebird": "^2.9.27",
-    "del": "^1.2.0",
-    "gulp": "^3.9.0",
-    "gulp-purescript": "^0.5.0-rc.1",
-    "lodash": "^3.9.3"
+    "bluebird": "2.9.27",
+    "del": "1.2.0",
+    "gulp": "3.9.0",
+    "gulp-purescript": "0.5.0-rc.1",
+    "lodash": "3.9.3"
   }
 }
