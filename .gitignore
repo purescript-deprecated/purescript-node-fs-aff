@@ -1,3 +1,4 @@
+.psci_modules
 *.sw[mnopqrstuv]
 *.un~
 .psci
