@@ -40,5 +40,5 @@ gulp.task('example', ['make:example'], function () {
     return purs.pscBundle({
         src: 'output/**/*.js'
       , main: 'Example.Main'
-    });
+    }).pipe(run('node'));
 });
