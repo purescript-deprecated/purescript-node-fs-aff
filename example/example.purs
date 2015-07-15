@@ -16,11 +16,6 @@ import qualified Node.FS.Aff as FS
 import qualified Node.FS as FS
 import qualified Node.FS.Stats as FS
 
-trace :: forall e a. (Show a) => a -> Aff (console :: CONSOLE | e) a
-trace a = do
-  liftEff $ log (show a)
-  return a
-
 main = launchAff do
   files <- FS.readdir "."
   files' <- flip filterM files \file -> do
