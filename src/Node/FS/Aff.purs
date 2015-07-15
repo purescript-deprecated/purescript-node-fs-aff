@@ -1,7 +1,7 @@
 module Node.FS.Aff
-( rename
-, truncate
-, chown
+  ( rename
+  , truncate
+  , chown
   , chmod
   , stat
   , link
