@@ -1,6 +1,6 @@
 module Example.Main where
 
-import Prelude 
+import Prelude
 
 import Data.Maybe
 import Data.Array
