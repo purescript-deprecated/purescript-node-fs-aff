@@ -22,6 +22,13 @@ gulp.task('psci', function() {
     }).pipe(gulp.dest('.'));
 });
 
+gulp.task('docs', function () {
+    return purs.pscDocs({
+        src: src
+      , docgen: { 'Node.FS.Aff': 'README.md' }
+    });
+});
+
 gulp.task('make', [ 'psci' ], function() {
     return purs.psc({
         src: src
