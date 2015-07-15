@@ -25,7 +25,7 @@ gulp.task('psci', function() {
 gulp.task('docs', function () {
     return purs.pscDocs({
         src: src
-      , docgen: { 'Node.FS.Aff': 'README.md' }
+      , docgen: { 'Node.FS.Aff': 'docs/Node/FS/Aff.md' }
     });
 });
 
