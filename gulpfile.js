@@ -1,55 +1,51 @@
 'use strict';
 
-/**
- * Add `./output` to path i.o. to load modules.
- * Warning: This is a hack
- * https://gist.github.com/branneman/8048520#6-the-hack
- */
-process.env.NODE_PATH = __dirname + '/output';
-require('module').Module._initPaths();
-
 var gulp = require('gulp')
   , purs = require('gulp-purescript')
-  , Promise = require('bluebird')
-  , del = Promise.promisifyAll(require('del'))
+  , run = require('gulp-run')
   , _ = require('lodash')
 ;
 
-var src = [ 'src/**/*.purs' ]
-  , deps = [ 'bower_components/purescript-*/src/**/*.purs' ]
+var src = [ 'src/**/*.purs'
+          , 'bower_components/purescript-*/src/**/*.purs'
+          ]
+  , ffi = [ 'src/**/*.js'
+          , 'bower_components/purescript-*/src/**/*.js'
+          ]
   , example = [ 'example/example.purs' ]
-  , output = [ 'output' ]
 ;
 
 gulp.task('psci', function() {
-    return gulp
-        .src(_.flatten([ src, deps ], false))
-        .pipe(purs.dotPsci())
-    ;
+    return purs.psci({
+        src: src
+      , ffi: ffi
+    }).pipe(gulp.dest('.'));
+});
+
+gulp.task('docs', function () {
+    return purs.pscDocs({
+        src: src
+      , docgen: { 'Node.FS.Aff': 'docs/Node/FS/Aff.md' }
+    });
 });
 
 gulp.task('make', [ 'psci' ], function() {
-    return gulp
-        .src(_.flatten([ src, deps ], false))
-        .pipe(purs.pscMake({}))
-    ;
-});
-
-gulp.task('docs', function() {
-    return gulp
-        .src(src)
-        .pipe(purs.pscDocs({}))
-        .pipe(gulp.dest('README.md'))
-    ;
+    return purs.psc({
+        src: src
+      , ffi: ffi
+    });
 });
 
 gulp.task('make:example', function() {
-    return gulp
-        .src(_.flatten([ src, example, deps ], false))
-        .pipe(purs.pscMake({}))
-    ;
+    return purs.psc({
+        src: _.flatten([ src, example ])
+      , ffi: ffi
+    });
 });
 
-gulp.task('example', ['make:example'], function() {
-    require('Example.Main').main();
+gulp.task('example', ['make:example'], function () {
+    return purs.pscBundle({
+        src: 'output/**/*.js'
+      , main: 'Example.Main'
+    }).pipe(run('node'));
 });

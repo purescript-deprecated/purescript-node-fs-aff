@@ -1,28 +1,3 @@
--- |
--- | [Node.FS][Node.FS] Wrappers for [purescript-aff][aff]
--- |
--- | The `Aff` monad let's you write async code with ease.
--- |
--- | Consider asynchronously listing only non-hidden directories:
--- |
--- | ``` purescript
--- | main = launchAff do
--- |   files <- FS.readdir "."
--- |   files' <- flip filterM files \file -> do
--- |     stat <- FS.stat file
--- |     return $
--- |          FS.isDirectory stat
--- |       && (maybe false (fromChar >>> (/= ".")) $ charAt 0 file)
--- |   liftEff $ Debug.Trace.trace $ show files'
--- | ```
--- |
--- | That was easy. For a working example, see [example.purs][example].
--- | To build the example, run `gulp example`.
--- |
--- | [Node.FS]: http://github.com/purescript-node/purescript-node-fs
--- | [aff]: https://github.com/slamdata/purescript-aff
--- | [example]: http://github.com/purescript-node/purescript-node-fs-aff/blob/master/example/example.purs
-
 module Node.FS.Aff
   ( rename
   , truncate
@@ -48,6 +23,8 @@ module Node.FS.Aff
   , appendTextFile
   , exists
   ) where
+
+import Prelude
 
 import Node.Path (FilePath())
 import Node.FS.Perms (Perms())
@@ -184,7 +161,7 @@ mkdir' = toAff2 A.mkdir'
 -- | Reads the contents of a directory.
 -- |
 readdir :: forall eff. FilePath
-                    -> Aff (fs :: F.FS | eff) [FilePath]
+                    -> Aff (fs :: F.FS | eff) (Array FilePath)
 readdir = toAff1 A.readdir
 
 -- |
@@ -246,23 +223,8 @@ appendTextFile :: forall eff. Encoding
 appendTextFile = toAff3 A.appendTextFile
 
 -- |
--- Patch `Node.FS.Async.exists`
--- The current version of `Node.FS.Async.exists` fails the occurs check
--- because it's callback signature does not include the FS effect.
---
-import Data.Function
-foreign import mkEff
-  "function mkEff(action) {\
-  \  return action;\
-  \}" :: forall eff a. (Unit -> a) -> Eff eff a
-foreign import fs "var fs = require('fs');" ::
-  { exists :: forall a. Fn2 FilePath (Boolean -> a) Unit }
-_exists file cb = mkEff $ \_ -> runFn2
-  fs.exists file $ \b -> runPure (unsafeInterleaveEff (cb b))
-
--- |
 -- | Check to see if a file exists.
 -- |
 exists :: forall eff. String
                    -> Aff (fs :: F.FS | eff) Boolean
-exists file = makeAff \_ a -> _exists file a
+exists file = makeAff \_ a -> A.exists file a
