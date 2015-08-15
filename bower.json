@@ -4,6 +4,10 @@
   "authors": [
     "Felix Schlitter <felixschlitter@gmail.com>"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/purescript-node/purescript-node-fs-aff.git"
+  },
   "description": "Aff wrappers for purescript-node-fs",
   "keywords": [
     "purescript",
