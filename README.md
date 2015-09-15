@@ -1,5 +1,6 @@
 ## Node.FS.Aff
 
+[![Build Status](https://travis-ci.org/purescript-node/purescript-node-fs-aff.svg)](https://travis-ci.org/purescript-node/purescript-node-fs-aff)
 
 > [Node.FS][Node.FS] Wrappers for [purescript-aff][aff]
 
