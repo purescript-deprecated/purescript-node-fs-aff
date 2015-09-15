@@ -49,3 +49,5 @@ gulp.task('example', ['make:example'], function () {
       , main: 'Example.Main'
     }).pipe(run('node'));
 });
+
+gulp.task('default', ['make:example']);
