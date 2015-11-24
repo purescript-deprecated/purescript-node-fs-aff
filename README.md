@@ -4,7 +4,8 @@
 
 > [Node.FS][Node.FS] Wrappers for [purescript-aff][aff]
 
-The `Aff` monad let's you write async code with ease.
+The `Aff` monad lets you write async code with ease, and `node-fs-aff`
+lets you easily access the filesystem within `Aff`.
 
 #### Example
 
