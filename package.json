@@ -1,17 +1,11 @@
 {
   "private": true,
+  "scripts": {
+    "postinstall": "pulp dep install",
+    "build": "pulp build && rimraf docs && pulp docs"
+  },
   "devDependencies": {
-    "bluebird": "2.9.27",
-    "del": "1.2.0",
-    "gulp": "3.9.0",
-    "gulp-purescript": "0.5.0-rc.1",
-    "lodash": "3.9.3",
-    "bluebird": "^2.9.27",
-    "del": "^1.2.0",
-    "gulp": "^3.9.0",
-    "gulp-purescript": "^0.5.0-rc.1",
-    "gulp-run": "^1.6.8",
-    "lodash": "^3.9.3",
-    "purescript": "^0.7.4-rc.1"
+    "pulp": "^4.0.2",
+    "rimraf": "^2.4.1"
   }
 }
