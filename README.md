@@ -21,7 +21,7 @@ main = launchAff do
   liftEff $ print files'
 ```
 
-That was easy. Run `gulp example` to see it work.
+That was easy. Run `npm run example` to see it work.
 
 #### Documentation
 
