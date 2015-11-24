@@ -28,8 +28,8 @@
     "example"
   ],
   "dependencies": {
-    "purescript-aff": "~0.11.3",
-    "purescript-node-fs": "~0.8.1",
+    "purescript-aff": "~0.13.1",
+    "purescript-node-fs": "~0.9.1",
     "purescript-either": "~0.2.2",
     "purescript-node-path": "~0.4.0"
   }

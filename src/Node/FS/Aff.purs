@@ -30,11 +30,10 @@ import Node.Path (FilePath())
 import Node.FS.Perms (Perms())
 import Node.FS.Stats (Stats())
 import Data.Date (Date())
-import Control.Monad.Eff (Eff(), runPure)
-import Control.Monad.Eff.Unsafe (unsafeInterleaveEff)
+import Control.Monad.Eff (Eff())
 import Data.Either (either)
 import Control.Monad.Aff (Aff(), makeAff)
-import Node.Buffer (Buffer())
+import Node.Buffer (Buffer(), BUFFER())
 import Node.Encoding (Encoding())
 import qualified Node.FS as F
 import qualified Node.FS.Async as A
@@ -44,8 +43,25 @@ toAff :: forall eff a.
   Aff (fs :: F.FS | eff) a
 toAff p = makeAff \e a -> p $ either e a
 
+toAff1 :: forall eff a x.
+  (x -> A.Callback eff a -> Eff (fs :: F.FS | eff) Unit) ->
+  x ->
+  Aff (fs :: F.FS | eff) a
 toAff1 f a     = toAff (f a)
+
+toAff2 :: forall eff a x y.
+  (x -> y -> A.Callback eff a -> Eff (fs :: F.FS | eff) Unit) ->
+  x ->
+  y ->
+  Aff (fs :: F.FS | eff) a
 toAff2 f a b   = toAff (f a b)
+
+toAff3 :: forall eff a x y z.
+  (x -> y -> z -> A.Callback eff a -> Eff (fs :: F.FS | eff) Unit) ->
+  x ->
+  y ->
+  z ->
+  Aff (fs :: F.FS | eff) a
 toAff3 f a b c = toAff (f a b c)
 
 -- |
@@ -60,7 +76,7 @@ rename = toAff2 A.rename
 -- | Truncates a file to the specified length.
 -- |
 truncate :: forall eff. FilePath
-                     -> Number
+                     -> Int
                      -> Aff (fs :: F.FS | eff) Unit
 truncate = toAff2 A.truncate
 
@@ -68,8 +84,8 @@ truncate = toAff2 A.truncate
 -- | Changes the ownership of a file.
 -- |
 chown :: forall eff. FilePath
-                  -> Number
-                  -> Number
+                  -> Int
+                  -> Int
                   -> Aff (fs :: F.FS | eff) Unit
 chown = toAff3 A.chown
 
@@ -177,7 +193,7 @@ utimes = toAff3 A.utimes
 -- | Reads the entire contents of a file returning the result as a raw buffer.
 -- |
 readFile :: forall eff. FilePath
-                     -> Aff (fs :: F.FS | eff) Buffer
+                     -> Aff (fs :: F.FS, buffer :: BUFFER | eff) Buffer
 readFile = toAff1 A.readFile
 
 -- |
@@ -193,7 +209,7 @@ readTextFile = toAff2 A.readTextFile
 -- |
 writeFile :: forall eff. FilePath
                       -> Buffer
-                      -> Aff (fs :: F.FS | eff) Unit
+                      -> Aff (fs :: F.FS, buffer :: BUFFER | eff) Unit
 writeFile = toAff2 A.writeFile
 
 -- |
@@ -210,7 +226,7 @@ writeTextFile = toAff3 A.writeTextFile
 -- |
 appendFile :: forall eff. FilePath
                        -> Buffer
-                       -> Aff (fs :: F.FS | eff) Unit
+                       -> Aff (fs :: F.FS, buffer :: BUFFER | eff) Unit
 appendFile = toAff2 A.appendFile
 
 -- |
