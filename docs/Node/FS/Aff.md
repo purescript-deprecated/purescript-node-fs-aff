@@ -13,7 +13,7 @@ Rename a file.
 #### `truncate`
 
 ``` purescript
-truncate :: forall eff. FilePath -> Number -> Aff (fs :: FS | eff) Unit
+truncate :: forall eff. FilePath -> Int -> Aff (fs :: FS | eff) Unit
 ```
 
 
@@ -23,7 +23,7 @@ Truncates a file to the specified length.
 #### `chown`
 
 ``` purescript
-chown :: forall eff. FilePath -> Number -> Number -> Aff (fs :: FS | eff) Unit
+chown :: forall eff. FilePath -> Int -> Int -> Aff (fs :: FS | eff) Unit
 ```
 
 
@@ -164,7 +164,7 @@ Sets the accessed and modified times for the specified file.
 #### `readFile`
 
 ``` purescript
-readFile :: forall eff. FilePath -> Aff (fs :: FS | eff) Buffer
+readFile :: forall eff. FilePath -> Aff (fs :: FS, buffer :: BUFFER | eff) Buffer
 ```
 
 
@@ -184,7 +184,7 @@ Reads the entire contents of a text file with the specified encoding.
 #### `writeFile`
 
 ``` purescript
-writeFile :: forall eff. FilePath -> Buffer -> Aff (fs :: FS | eff) Unit
+writeFile :: forall eff. FilePath -> Buffer -> Aff (fs :: FS, buffer :: BUFFER | eff) Unit
 ```
 
 
@@ -204,7 +204,7 @@ Writes text to a file using the specified encoding.
 #### `appendFile`
 
 ``` purescript
-appendFile :: forall eff. FilePath -> Buffer -> Aff (fs :: FS | eff) Unit
+appendFile :: forall eff. FilePath -> Buffer -> Aff (fs :: FS, buffer :: BUFFER | eff) Unit
 ```
 
 
