@@ -22,10 +22,17 @@ module Node.FS.Aff
   , appendFile
   , appendTextFile
   , exists
+  , fdOpen
+  , fdRead
+  , fdNext
+  , fdWrite
+  , fdAppend
+  , fdClose
   ) where
 
 import Prelude
 
+import Data.Maybe (Maybe())
 import Node.Path (FilePath())
 import Node.FS.Perms (Perms())
 import Node.FS.Stats (Stats())
@@ -63,6 +70,16 @@ toAff3 :: forall eff a x y z.
   z ->
   Aff (fs :: F.FS | eff) a
 toAff3 f a b c = toAff (f a b c)
+
+toAff5 :: forall eff a w v x y z.
+  (w -> v -> x -> y -> z -> A.Callback eff a -> Eff (fs :: F.FS | eff) Unit) ->
+  w ->
+  v ->
+  x ->
+  y ->
+  z ->
+  Aff (fs :: F.FS | eff) a
+toAff5 f a b c d e = toAff (f a b c d e)
 
 -- |
 -- | Rename a file.
@@ -244,3 +261,57 @@ appendTextFile = toAff3 A.appendTextFile
 exists :: forall eff. String
                    -> Aff (fs :: F.FS | eff) Boolean
 exists file = makeAff \_ a -> A.exists file a
+
+-- | Open a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback)
+-- | for details.
+fdOpen :: forall eff.
+          FilePath
+       -> F.FileFlags
+       -> Maybe F.FileMode
+       -> Aff (fs :: F.FS | eff) F.FileDescriptor
+fdOpen = toAff3 A.fdOpen
+
+-- | Read from a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_read_fd_buffer_offset_length_position_callback)
+-- | for details.
+fdRead :: forall eff.
+          F.FileDescriptor
+       -> Buffer
+       -> F.BufferOffset
+       -> F.BufferLength
+       -> Maybe F.FilePosition
+       -> Aff (buffer :: BUFFER, fs :: F.FS | eff) F.ByteCount
+fdRead = toAff5 A.fdRead
+
+-- | Convenience function to fill the whole buffer from the current
+-- | file position.
+fdNext :: forall eff.
+          F.FileDescriptor
+       -> Buffer
+       -> Aff (buffer :: BUFFER, fs :: F.FS | eff) F.ByteCount
+fdNext = toAff2 A.fdNext
+
+-- | Write to a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_write_fd_buffer_offset_length_position_callback)
+-- | for details.
+fdWrite :: forall eff.
+           F.FileDescriptor
+        -> Buffer
+        -> F.BufferOffset
+        -> F.BufferLength
+        -> Maybe F.FilePosition
+        -> Aff (buffer :: BUFFER, fs :: F.FS | eff) F.ByteCount
+fdWrite = toAff5 A.fdWrite
+
+-- | Convenience function to append the whole buffer to the current
+-- | file position.
+fdAppend :: forall eff.
+            F.FileDescriptor
+         -> Buffer
+         -> Aff (buffer :: BUFFER, fs :: F.FS | eff) F.ByteCount
+fdAppend = toAff2 A.fdAppend
+
+-- | Close a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_close_fd_callback)
+-- | for details.
+fdClose :: forall eff.
+           F.FileDescriptor
+        -> Aff (fs :: F.FS | eff) Unit
+fdClose = toAff1 A.fdClose
