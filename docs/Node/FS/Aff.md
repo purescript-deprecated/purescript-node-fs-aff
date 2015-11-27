@@ -231,4 +231,58 @@ exists :: forall eff. String -> Aff (fs :: FS | eff) Boolean
 Check to see if a file exists.
 
 
+#### `fdOpen`
+
+``` purescript
+fdOpen :: forall eff. FilePath -> FileFlags -> Maybe FileMode -> Aff (fs :: FS | eff) FileDescriptor
+```
+
+Open a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback)
+for details.
+
+#### `fdRead`
+
+``` purescript
+fdRead :: forall eff. FileDescriptor -> Buffer -> BufferOffset -> BufferLength -> Maybe FilePosition -> Aff (buffer :: BUFFER, fs :: FS | eff) ByteCount
+```
+
+Read from a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_read_fd_buffer_offset_length_position_callback)
+for details.
+
+#### `fdNext`
+
+``` purescript
+fdNext :: forall eff. FileDescriptor -> Buffer -> Aff (buffer :: BUFFER, fs :: FS | eff) ByteCount
+```
+
+Convenience function to fill the whole buffer from the current
+file position.
+
+#### `fdWrite`
+
+``` purescript
+fdWrite :: forall eff. FileDescriptor -> Buffer -> BufferOffset -> BufferLength -> Maybe FilePosition -> Aff (buffer :: BUFFER, fs :: FS | eff) ByteCount
+```
+
+Write to a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_write_fd_buffer_offset_length_position_callback)
+for details.
+
+#### `fdAppend`
+
+``` purescript
+fdAppend :: forall eff. FileDescriptor -> Buffer -> Aff (buffer :: BUFFER, fs :: FS | eff) ByteCount
+```
+
+Convenience function to append the whole buffer to the current
+file position.
+
+#### `fdClose`
+
+``` purescript
+fdClose :: forall eff. FileDescriptor -> Aff (fs :: FS | eff) Unit
+```
+
+Close a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_close_fd_callback)
+for details.
+
 
