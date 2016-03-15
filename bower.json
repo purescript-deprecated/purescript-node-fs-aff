@@ -28,7 +28,7 @@
     "example"
   ],
   "dependencies": {
-    "purescript-aff": ">= 0.13.1 < 0.15.0",
+    "purescript-aff": ">= 0.13.1 < 0.16.0",
     "purescript-node-fs": "~0.10.0",
     "purescript-either": "~0.2.2",
     "purescript-node-path": "~0.4.0"
