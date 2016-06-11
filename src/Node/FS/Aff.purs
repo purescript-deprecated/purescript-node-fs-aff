@@ -32,18 +32,18 @@ module Node.FS.Aff
 
 import Prelude
 
-import Data.Maybe (Maybe())
-import Node.Path (FilePath())
-import Node.FS.Perms (Perms())
-import Node.FS.Stats (Stats())
-import Data.Date (Date())
-import Control.Monad.Eff (Eff())
-import Data.Either (either)
 import Control.Monad.Aff (Aff(), makeAff)
+import Control.Monad.Eff (Eff())
+import Data.DateTime (DateTime())
+import Data.Either (either)
+import Data.Maybe (Maybe())
 import Node.Buffer (Buffer(), BUFFER())
 import Node.Encoding (Encoding())
-import qualified Node.FS as F
-import qualified Node.FS.Async as A
+import Node.FS as F
+import Node.FS.Async as A
+import Node.FS.Perms (Perms())
+import Node.FS.Stats (Stats())
+import Node.Path (FilePath())
 
 toAff :: forall eff a.
   (A.Callback eff a -> Eff (fs :: F.FS | eff) Unit) ->
@@ -201,8 +201,8 @@ readdir = toAff1 A.readdir
 -- | Sets the accessed and modified times for the specified file.
 -- |
 utimes :: forall eff. FilePath
-                   -> Date
-                   -> Date
+                   -> DateTime
+                   -> DateTime
                    -> Aff (fs :: F.FS | eff) Unit
 utimes = toAff3 A.utimes
 

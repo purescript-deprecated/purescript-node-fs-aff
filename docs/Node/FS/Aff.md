@@ -154,7 +154,7 @@ Reads the contents of a directory.
 #### `utimes`
 
 ``` purescript
-utimes :: forall eff. FilePath -> Date -> Date -> Aff (fs :: FS | eff) Unit
+utimes :: forall eff. FilePath -> DateTime -> DateTime -> Aff (fs :: FS | eff) Unit
 ```
 
 
