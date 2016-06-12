@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "postinstall": "pulp dep install",
+    "postinstall": "bower install",
     "build": "pulp build && rimraf docs && pulp docs",
     "example": "pulp run -I example --main Example.Main"
   },
