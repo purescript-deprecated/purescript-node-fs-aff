@@ -6,7 +6,7 @@
     "example": "pulp run -I example --main Example.Main"
   },
   "devDependencies": {
-    "pulp": "^4.0.2",
+    "pulp": "^9.0.0",
     "rimraf": "^2.4.1"
   }
 }
