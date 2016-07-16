@@ -16,7 +16,7 @@ main = launchAff do
   files <- FS.readdir "."
   files' <- flip filterM files \file -> do
     stat <- FS.stat file
-    return $
+    pure $
          FS.isDirectory stat
       && (maybe false (fromChar >>> (/= ".")) $ charAt 0 file)
   liftEff $ print files'
