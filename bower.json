@@ -13,7 +13,7 @@
     "node"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/felixSchl/purescript-node-fs-aff",
+  "homepage": "https://github.com/purescript-node/purescript-node-fs-aff",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -23,13 +23,12 @@
     "output",
     "tmp",
     "bower.json",
-    "gulpfile.js",
     "package.json",
     "example"
   ],
   "dependencies": {
-    "purescript-aff": "^1.0.0",
-    "purescript-node-fs": "^1.0.0",
+    "purescript-aff": "^1.1.0",
+    "purescript-node-fs": "^2.0.0",
     "purescript-either": "^1.0.0",
     "purescript-node-path": "^1.0.0"
   }
