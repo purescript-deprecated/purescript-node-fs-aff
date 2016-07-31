@@ -1,8 +1,7 @@
-.psci_modules
-*.sw[mnopqrstuv]
-*.un~
-.psci
-node_modules
-bower_components
-output
-dist
+/.*
+!/.gitignore
+!/.travis.yml
+/bower_components/
+/node_modules/
+/tmp/
+/output/

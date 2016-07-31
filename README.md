@@ -1,13 +1,15 @@
-## Node.FS.Aff
+# purescript-node-fs-aff
 
-[![Build Status](https://travis-ci.org/purescript-node/purescript-node-fs-aff.svg)](https://travis-ci.org/purescript-node/purescript-node-fs-aff)
+[![Latest release](http://img.shields.io/bower/v/purescript-node-fs-aff.svg)](https://github.com/purescript-node/purescript-node-fs-aff/releases)
+[![Build Status](https://travis-ci.org/purescript-node/purescript-node-fs-aff.svg?branch=master)](https://travis-ci.org/purescript-node/purescript-node-fs-aff)
+[![Dependency Status](https://www.versioneye.com/user/projects/579dffa9aa78d500469f9d71/badge.svg?style=flat)](https://www.versioneye.com/user/projects/579dffa9aa78d500469f9d71)
 
-> [Node.FS][Node.FS] Wrappers for [purescript-aff][aff]
+[Node.FS][Node.FS] Wrappers for [purescript-aff][aff]
 
 The `Aff` monad lets you write async code with ease, and `node-fs-aff`
 lets you easily access the filesystem within `Aff`.
 
-#### Example
+## Example
 
 Consider asynchronously listing only non-hidden directories:
 
@@ -24,11 +26,10 @@ main = launchAff do
 
 That was easy. Run `npm run example` to see it work.
 
-#### Documentation
+## Documentation
 
-[Read the module docs][docs]
+Module documentation is [published on Pursuit](http://pursuit.purescript.org/packages/purescript-node-fs-aff).
 
 
 [Node.FS]: http://github.com/purescript-node/purescript-node-fs
 [aff]: https://github.com/slamdata/purescript-aff
-[docs]: http://github.com/purescript-node/purescript-node-fs-aff/blob/master/docs/Node/FS/Aff.md
