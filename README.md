@@ -1,8 +1,7 @@
 # purescript-node-fs-aff
 
-[![Latest release](http://img.shields.io/bower/v/purescript-node-fs-aff.svg)](https://github.com/purescript-node/purescript-node-fs-aff/releases)
+[![Latest release](http://img.shields.io/github/release/purescript-node/purescript-node-fs-aff.svg)](https://github.com/purescript-node/purescript-node-fs-aff/releases)
 [![Build Status](https://travis-ci.org/purescript-node/purescript-node-fs-aff.svg?branch=master)](https://travis-ci.org/purescript-node/purescript-node-fs-aff)
-[![Dependency Status](https://www.versioneye.com/user/projects/579dffa9aa78d500469f9d71/badge.svg?style=flat)](https://www.versioneye.com/user/projects/579dffa9aa78d500469f9d71)
 
 [Node.FS][Node.FS] Wrappers for [purescript-aff][aff]
 
