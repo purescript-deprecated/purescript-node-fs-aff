@@ -28,22 +28,25 @@ module Node.FS.Aff
   , fdWrite
   , fdAppend
   , fdClose
+  , module Exports
   ) where
 
 import Prelude
 
-import Control.Monad.Aff (Aff(), makeAff)
-import Control.Monad.Eff (Eff())
-import Data.DateTime (DateTime())
+import Control.Monad.Aff (Aff, makeAff)
+import Control.Monad.Eff (Eff)
+import Data.DateTime (DateTime)
 import Data.Either (either)
-import Data.Maybe (Maybe())
-import Node.Buffer (Buffer(), BUFFER())
-import Node.Encoding (Encoding())
+import Data.Maybe (Maybe)
+import Node.Buffer (Buffer, BUFFER)
+import Node.Encoding (Encoding)
 import Node.FS as F
 import Node.FS.Async as A
-import Node.FS.Perms (Perms())
-import Node.FS.Stats (Stats())
-import Node.Path (FilePath())
+import Node.FS.Perms (Perms)
+import Node.FS.Stats (Stats)
+import Node.Path (FilePath)
+
+import Node.FS (FS) as Exports
 
 toAff :: forall eff a.
   (A.Callback eff a -> Eff (fs :: F.FS | eff) Unit) ->
