@@ -9,7 +9,7 @@ install:
 script:
   - npm run -s build
   - bower install
-  - npm run -s example
+  - npm run -s test
 after_success:
 - >-
   test $TRAVIS_TAG &&
