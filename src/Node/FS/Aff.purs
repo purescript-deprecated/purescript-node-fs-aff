@@ -33,10 +33,9 @@ module Node.FS.Aff
 
 import Prelude
 
-import Control.Monad.Aff (Aff, makeAff)
+import Control.Monad.Aff (Aff, makeAff, nonCanceler)
 import Control.Monad.Eff (Eff)
 import Data.DateTime (DateTime)
-import Data.Either (either)
 import Data.Maybe (Maybe)
 import Node.Buffer (Buffer, BUFFER)
 import Node.Encoding (Encoding)
@@ -51,7 +50,7 @@ import Node.FS (FS) as Exports
 toAff :: forall eff a.
   (A.Callback eff a -> Eff (fs :: F.FS | eff) Unit) ->
   Aff (fs :: F.FS | eff) a
-toAff p = makeAff \e a -> p $ either e a
+toAff p = makeAff \k -> p k $> nonCanceler
 
 toAff1 :: forall eff a x.
   (x -> A.Callback eff a -> Eff (fs :: F.FS | eff) Unit) ->
@@ -263,7 +262,7 @@ appendTextFile = toAff3 A.appendTextFile
 -- |
 exists :: forall eff. String
                    -> Aff (fs :: F.FS | eff) Boolean
-exists file = makeAff \_ a -> A.exists file a
+exists file = makeAff \k -> A.exists file (pure >>> k) $> nonCanceler
 
 -- | Open a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback)
 -- | for details.
