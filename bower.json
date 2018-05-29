@@ -27,12 +27,12 @@
     "example"
   ],
   "dependencies": {
-    "purescript-aff": "#compiler/0.12",
-    "purescript-either": "#compiler/0.12",
-    "purescript-node-fs": "#compiler/0.12",
-    "purescript-node-path": "#compiler/0.12"
+    "purescript-aff": "^5.0.0",
+    "purescript-either": "^4.0.0",
+    "purescript-node-fs": "^5.0.0",
+    "purescript-node-path": "^3.0.0"
   },
   "devDependencies": {
-    "purescript-console": "#compiler/0.12"
+    "purescript-console": "^4.1.0"
   }
 }

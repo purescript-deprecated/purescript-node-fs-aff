@@ -4,7 +4,7 @@ import Prelude
 
 import Data.Array (filterA)
 import Data.Maybe (maybe)
-import Data.String (charAt, singleton)
+import Data.String.CodeUnits (charAt, singleton)
 import Effect (Effect)
 import Effect.Aff (launchAff_)
 import Effect.Class (liftEffect)
