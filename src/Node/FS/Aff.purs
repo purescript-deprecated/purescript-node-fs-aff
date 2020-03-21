@@ -219,7 +219,7 @@ appendTextFile = toAff3 A.appendTextFile
 -- |
 -- | Check to see if a file exists.
 -- |
-exists :: String -> Aff Boolean
+exists :: FilePath -> Aff Boolean
 exists file = makeAff \k -> A.exists file (pure >>> k) $> nonCanceler
 
 -- | Open a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback)
