@@ -27,7 +27,7 @@
     "example"
   ],
   "dependencies": {
-    "purescript-aff": "master",
+    "purescript-aff": "main",
     "purescript-either": "master",
     "purescript-node-fs": "master",
     "purescript-node-path": "master"
