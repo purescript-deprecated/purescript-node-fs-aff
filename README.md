@@ -19,17 +19,22 @@ spago install node-fs-aff
 Consider asynchronously listing only non-hidden directories:
 
 ```purescript
-main = launchAff do
-  files <- FS.readdir "."
-  files' <- flip filterM files \file -> do
-    stat <- FS.stat file
-    pure $
-         FS.isDirectory stat
-      && (maybe false (fromChar >>> (/= ".")) $ charAt 0 file)
-  liftEff $ print files'
+isDotFile :: FilePath -> Boolean
+isDotFile filepath = (charAt 0 filepath) == Just "."
+
+isHiddenDirectory :: FilePath -> Aff Boolean
+isHiddenDirectory filepath = do
+  stat <- FSA.stat filepath
+  pure $ FS.isDirectory stat && not (isDotFile filepath)
+       
+main :: Effect Unit
+main = launchAff_ do
+  files <- FSA.readdir "."
+  files' <- filterM isHiddenDirectory (L.fromFoldable files) 
+  liftEffect $ traverse log files'
 ```
 
-That was easy. Run `npm run example` to see it work.
+You can see this example in action by running `spago run` in the example directory.
 
 ## Documentation
 
