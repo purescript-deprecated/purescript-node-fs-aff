@@ -12,9 +12,18 @@ Bugfixes:
 
 Other improvements:
 
+## [v7.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v7.0.0) - 2021-MONTH-DAY
+
+Breaking changes:
+  - Added support for PureScript 0.14 and dropped support for all previous versions (#27)
+
+Other improvements:
+  - Migrated CI to GitHub Actions (#25)
+  - Added a changelog and pull request template (#28)
+
 ## [v6.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v6.0.0) - 2018-05-29
 
-Updates for 0.12
+- Updates for 0.12
 
 ## [v5.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v5.0.0) - 2017-10-03
 
@@ -34,7 +43,7 @@ Updates for 0.11 compiler
 
 ## [v1.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v1.0.0) - 2016-06-12
 
-Updates for 1.0 core libraries and 0.9.1 compiler.
+- Updates for 1.0 core libraries and 0.9.1 compiler.
 
 ## [v0.5.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v0.5.0) - 2016-03-15
 
@@ -46,5 +55,4 @@ Updates for 1.0 core libraries and 0.9.1 compiler.
 
 ## [v0.1.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v0.1.0) - 2015-08-11
 
-Initial tagged release.
-
+- Initial tagged release.
