@@ -12,7 +12,7 @@ Bugfixes:
 
 Other improvements:
 
-## [v7.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v7.0.0) - 2021-MONTH-DAY
+## [v7.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v7.0.0) - 2021-02-26
 
 Breaking changes:
   - Added support for PureScript 0.14 and dropped support for all previous versions (#27)
