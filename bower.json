@@ -5,7 +5,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/purescript-node/purescript-node-fs-aff.git"
+    "url": "https://github.com/purescript-node/purescript-node-fs-aff.git"
   },
   "description": "Aff wrappers for purescript-node-fs",
   "keywords": [
@@ -27,12 +27,12 @@
     "example"
   ],
   "dependencies": {
-    "purescript-aff": "main",
-    "purescript-either": "master",
-    "purescript-node-fs": "master",
-    "purescript-node-path": "master"
+    "purescript-aff": "^6.0.0",
+    "purescript-either": "^5.0.0",
+    "purescript-node-fs": "^6.0.0",
+    "purescript-node-path": "^4.0.0"
   },
   "devDependencies": {
-    "purescript-console": "master"
+    "purescript-console": "^5.0.0"
   }
 }
