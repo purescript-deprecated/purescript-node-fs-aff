@@ -12,8 +12,9 @@ module Node.FS.Aff
   , unlink
   , rmdir
   , mkdir
-  , mkdirRecursive
   , mkdir'
+  , mkdirRecursive
+  , mkdirRecursive'
   , readdir
   , utimes
   , readFile
@@ -170,10 +171,16 @@ mkdirRecursive :: FilePath -> Aff Unit
 mkdirRecursive = toAff1 A.mkdirRecursive
 
 -- |
+-- | Makes a new directory recursively (e.g. `mkdir -p`).
+-- |
+mkdirRecursive' :: FilePath -> Perms -> Aff Unit
+mkdirRecursive' = toAff2 A.mkdirRecursive
+
+-- |
 -- | Makes a new directory with the specified permissions.
 -- |
-mkdir' :: FilePath -> Boolean -> Perms -> Aff Unit
-mkdir' = toAff3 A.mkdir'
+mkdir' :: FilePath -> Perms -> Aff Unit
+mkdir' = toAff2 A.mkdir'
 
 -- |
 -- | Reads the contents of a directory.
