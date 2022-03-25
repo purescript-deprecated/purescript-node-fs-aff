@@ -163,9 +163,9 @@ mkdir :: FilePath -> Aff Unit
 mkdir = toAff1 A.mkdir
 
 -- |
--- | Makes a new directory with the specified permissions.
+-- | Makes a new directory with all of its options.
 -- |
-mkdir' :: FilePath -> Perms -> Aff Unit
+mkdir' :: FilePath -> { recursive :: Boolean, mode :: Perms } -> Aff Unit
 mkdir' = toAff2 A.mkdir'
 
 -- |

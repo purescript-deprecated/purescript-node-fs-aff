@@ -6,6 +6,7 @@ Notable changes to this project are documented in this file. The format is based
 
 Breaking changes:
 - Update project and deps to PureScript v0.15.0 (#33 by @JordanMartinez, @thomashoneyman, @sigma-andex)
+- Update `mkdir'` to take options arg (#34 by @JordanMartinez)
 
 New features:
 
