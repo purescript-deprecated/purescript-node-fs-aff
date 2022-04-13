@@ -21,7 +21,6 @@ module Node.FS.Aff
   , writeTextFile
   , appendFile
   , appendTextFile
-  , exists
   , fdOpen
   , fdRead
   , fdNext
@@ -216,11 +215,6 @@ appendFile = toAff2 A.appendFile
 appendTextFile :: Encoding -> FilePath -> String -> Aff Unit
 appendTextFile = toAff3 A.appendTextFile
 
--- |
--- | Check to see if a file exists.
--- |
-exists :: String -> Aff Boolean
-exists file = makeAff \k -> A.exists file (pure >>> k) $> nonCanceler
 
 -- | Open a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback)
 -- | for details.
