@@ -32,16 +32,18 @@ module Node.FS.Aff
 
 import Prelude
 
-import Effect.Aff (Aff, makeAff, nonCanceler)
-import Effect (Effect)
 import Data.DateTime (DateTime)
 import Data.Maybe (Maybe)
+import Effect (Effect)
+import Effect.Aff (Aff, makeAff, nonCanceler)
+import Effect.Class (liftEffect)
 import Node.Buffer (Buffer)
 import Node.Encoding (Encoding)
 import Node.FS as F
 import Node.FS.Async as A
 import Node.FS.Perms (Perms)
 import Node.FS.Stats (Stats)
+import Node.FS.Sync as S
 import Node.Path (FilePath)
 
 toAff :: forall a.
@@ -220,7 +222,7 @@ appendTextFile = toAff3 A.appendTextFile
 -- | Check to see if a file exists.
 -- |
 exists :: String -> Aff Boolean
-exists file = makeAff \k -> A.exists file (pure >>> k) $> nonCanceler
+exists = liftEffect <<< S.exists
 
 -- | Open a file asynchronously. See the [Node Documentation](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback)
 -- | for details.
