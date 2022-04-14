@@ -35,14 +35,12 @@ import Data.DateTime (DateTime)
 import Data.Maybe (Maybe)
 import Effect (Effect)
 import Effect.Aff (Aff, makeAff, nonCanceler)
-import Effect.Class (liftEffect)
 import Node.Buffer (Buffer)
 import Node.Encoding (Encoding)
 import Node.FS as F
 import Node.FS.Async as A
 import Node.FS.Perms (Perms)
 import Node.FS.Stats (Stats)
-import Node.FS.Sync as S
 import Node.Path (FilePath)
 
 toAff :: forall a.
