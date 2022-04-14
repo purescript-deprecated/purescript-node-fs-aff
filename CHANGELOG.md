@@ -5,6 +5,7 @@ Notable changes to this project are documented in this file. The format is based
 ## [Unreleased]
 
 Breaking changes:
+- Remove `exists` since the underlying `Async.exists` from `purescript-node-fs` has been removed (#36 by @sigma-andex)
 - Update project and deps to PureScript v0.15.0 (#33 by @JordanMartinez, @thomashoneyman, @sigma-andex)
 - Update `mkdir'` to take options arg (#34 by @JordanMartinez)
 
