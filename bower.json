@@ -27,12 +27,12 @@
     "example"
   ],
   "dependencies": {
-    "purescript-aff": "main",
-    "purescript-either": "master",
-    "purescript-node-fs": "master",
-    "purescript-node-path": "master"
+    "purescript-aff": "^7.0.0",
+    "purescript-either": "^6.0.0",
+    "purescript-node-fs": "^7.0.1",
+    "purescript-node-path": "^5.0.0"
   },
   "devDependencies": {
-    "purescript-console": "master"
+    "purescript-console": "^6.0.0"
   }
 }
