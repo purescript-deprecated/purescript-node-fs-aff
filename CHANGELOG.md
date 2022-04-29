@@ -12,18 +12,16 @@ Bugfixes:
 
 Other improvements:
 
-## [v8.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v8.0.0) - 2022-04-27
+## [v9.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v9.0.0) - 2022-04-29
 
 Breaking changes:
 - Remove `exists` since the underlying `Async.exists` from `purescript-node-fs` has been removed (#36 by @sigma-andex)
 - Update project and deps to PureScript v0.15.0 (#33 by @JordanMartinez, @thomashoneyman, @sigma-andex)
 - Update `mkdir'` to take options arg (#34 by @JordanMartinez)
 
-New features:
+## [v8.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v8.0.0) - 2022-04-27
 
-Bugfixes:
-
-Other improvements:
+Due to implementing a breaking change incorrectly, use v10.0.0 instead.
 
 ## [v7.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v7.0.0) - 2021-02-26
 
