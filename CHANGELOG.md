@@ -8,12 +8,16 @@ Breaking changes:
 
 New features:
 
-- Update rmdir' to take options arg
-- Added rm and rm' versions with and without options arg
-
 Bugfixes:
 
 Other improvements:
+
+## [v9.1.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v9.1.0) - 2022-06-10
+
+New features:
+
+- Update rmdir' to take options arg (#39 by @wclr)
+- Added rm and rm' versions with and without options arg (#39 by @wclr)
 
 ## [v9.0.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v9.0.0) - 2022-04-29
 
