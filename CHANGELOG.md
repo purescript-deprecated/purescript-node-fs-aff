@@ -8,6 +8,9 @@ Breaking changes:
 
 New features:
 
+- Update rmdir' to take options arg
+- Added rm and rm' versions with and without options arg
+
 Bugfixes:
 
 Other improvements:
