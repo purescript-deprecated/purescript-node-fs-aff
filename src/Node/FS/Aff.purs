@@ -11,6 +11,9 @@ module Node.FS.Aff
   , realpath'
   , unlink
   , rmdir
+  , rmdir'
+  , rm
+  , rm'
   , mkdir
   , mkdir'
   , readdir
@@ -154,6 +157,25 @@ unlink = toAff1 A.unlink
 -- |
 rmdir :: FilePath -> Aff Unit
 rmdir = toAff1 A.rmdir
+
+-- |
+-- | Deletes a directory with options.
+-- |
+rmdir' :: FilePath -> { maxRetries :: Int, retryDelay :: Int } -> Aff Unit
+rmdir' = toAff2 A.rmdir'
+
+
+-- |
+-- | Deletes a file or directory.
+-- |
+rm :: FilePath -> Aff Unit
+rm = toAff1 A.rmdir
+
+-- |
+-- | Deletes a file or directory with options.
+-- |
+rm' :: FilePath -> { force :: Boolean, maxRetries :: Int, recursive :: Boolean, retryDelay :: Int } -> Aff Unit
+rm' = toAff2 A.rm'
 
 -- |
 -- | Makes a new directory.
