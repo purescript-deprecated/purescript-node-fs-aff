@@ -29,7 +29,7 @@
   "dependencies": {
     "purescript-aff": "^7.0.0",
     "purescript-either": "^6.0.0",
-    "purescript-node-fs": "^8.1.0",
+    "purescript-node-fs": "^8.2.0",
     "purescript-node-path": "^5.0.0"
   },
   "devDependencies": {
