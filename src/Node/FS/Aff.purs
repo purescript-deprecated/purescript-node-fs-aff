@@ -1,5 +1,11 @@
 module Node.FS.Aff
-  ( rename
+  ( access
+  , access'
+  , copyFile
+  , copyFile'
+  , mkdtemp
+  , mkdtemp'
+  , rename
   , truncate
   , chown
   , chmod
@@ -35,13 +41,15 @@ module Node.FS.Aff
 import Prelude
 
 import Data.DateTime (DateTime)
+import Data.Either (Either(..))
 import Data.Maybe (Maybe)
 import Effect (Effect)
-import Effect.Aff (Aff, makeAff, nonCanceler)
+import Effect.Aff (Aff, Error, makeAff, nonCanceler)
 import Node.Buffer (Buffer)
 import Node.Encoding (Encoding)
 import Node.FS as F
 import Node.FS.Async as A
+import Node.FS.Constants (AccessMode, CopyMode)
 import Node.FS.Perms (Perms)
 import Node.FS.Stats (Stats)
 import Node.Path (FilePath)
@@ -86,6 +94,28 @@ toAff5
   -> z
   -> Aff a
 toAff5 f a b c d e = toAff (f a b c d e)
+
+access :: String -> Aff (Maybe Error)
+access path = makeAff \k -> do
+  A.access path (k <<< Right)
+  pure nonCanceler
+
+access' :: String -> AccessMode -> Aff (Maybe Error)
+access' path mode = makeAff \k -> do
+  A.access' path mode (k <<< Right)
+  pure nonCanceler
+
+copyFile :: String -> String -> Aff Unit
+copyFile = toAff2 A.copyFile
+
+copyFile' :: String -> String -> CopyMode -> Aff Unit
+copyFile' = toAff3 A.copyFile'
+
+mkdtemp :: String -> Aff String
+mkdtemp = toAff1 A.mkdtemp
+
+mkdtemp' :: String -> Encoding -> Aff String
+mkdtemp' = toAff2 A.mkdtemp'
 
 -- |
 -- | Rename a file.
