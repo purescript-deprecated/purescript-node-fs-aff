@@ -12,6 +12,12 @@ Bugfixes:
 
 Other improvements:
 
+## [v9.2.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v9.2.0) - 2023-03-24
+
+New features:
+
+- Added `access`, `copyFile`, and `mkdtemp` (#40 by @JordanMartinez)
+
 ## [v9.1.0](https://github.com/purescript-node/purescript-node-fs-aff/releases/tag/v9.1.0) - 2022-06-10
 
 New features:
