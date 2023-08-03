@@ -10,7 +10,8 @@
   "description": "Aff wrappers for purescript-node-fs",
   "keywords": [
     "purescript",
-    "node"
+    "node",
+    "pursuit-deprecated"
   ],
   "license": "MIT",
   "homepage": "https://github.com/purescript-node/purescript-node-fs-aff",
