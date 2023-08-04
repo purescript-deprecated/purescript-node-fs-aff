@@ -5,7 +5,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/purescript-node/purescript-node-fs-aff.git"
+    "url": "https://github.com/purescript-deprecated/purescript-node-fs-aff.git"
   },
   "description": "Aff wrappers for purescript-node-fs",
   "keywords": [
@@ -14,7 +14,7 @@
     "pursuit-deprecated"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/purescript-node/purescript-node-fs-aff",
+  "homepage": "https://github.com/purescript-deprecated/purescript-node-fs-aff",
   "ignore": [
     "**/.*",
     "node_modules",
